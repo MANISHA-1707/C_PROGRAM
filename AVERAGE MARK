@@ -1,0 +1,43 @@
+#include<stdio.h>
+struct stu_dat
+{
+   char name[50];
+   int Reg_No;
+   int mark1;
+   int mark2;
+   int mark3;
+   int mark4;
+   int total;
+   float average;
+}a[100];
+main()
+{
+   int i,n;
+   printf("Enter the number of students:");
+   scanf("%d",&n);
+   for(i=0;i<=n-1;i++)
+   {
+      printf("\nEnter the name of the student:");
+      scanf("%s[^\n]",&a[i].name);
+      printf("\nEnter the register number of the student:");
+      scanf("%d",&a[i].Reg_No);
+      printf("\nEnter the mark1 of the student:");
+      scanf("%d",&a[i].mark1);
+      printf("\nEnter the mark2 of the student:");
+      scanf("%d",&a[i].mark2);
+      printf("\nEnter the mark3 of the student:");
+      scanf("%d",&a[i].mark3);
+      printf("\nEnter the mark4 of the student:");
+      scanf("%d",&a[i].mark4);
+      a[i].total=a[i].mark1+a[i].mark2+a[i].mark3+a[i].mark4;
+      a[i].average=a[i].total/4.0;\
+   }
+      printf("The Student details with average greater than 50:\n");
+      for(i=0;i<=n;i++)
+      {
+         if(a[i].average>50)
+         {
+            printf("%s\t%d\t%d\t%d\t%d\t%d\t%d\t%f\n",a[i].name,a[i].Reg_No,a[i].mark1,a[i].mark2,a[i].mark3,a[i].mark4,a[i].total,a[i].average);
+         }
+      }
+  }
