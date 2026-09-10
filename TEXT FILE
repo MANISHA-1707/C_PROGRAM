@@ -1,0 +1,45 @@
+#include <stdio.h>
+struct Student {
+   int rollNo;
+   char name[50];
+   float mark1, mark2, total, average;
+};
+
+int main() {
+   int n,i;
+   printf("Enter the number of students: ");
+   scanf("%d", &n);
+
+   struct Student students[n];
+   FILE *file = fopen("student_details.txt", "w");
+
+   for (i = 0; i < n; i++) {
+      printf("Enter details for student %d:\n", i + 1);
+      printf("Roll No: ");
+      scanf("%d", &students[i].rollNo);
+      printf("Name: ");
+      scanf("%s", students[i].name);
+      printf("Mark1: ");
+      scanf("%f", &students[i].mark1);
+      printf("Mark2: ");
+      scanf("%f", &students[i].mark2);
+      students[i].total = students[i].mark1 + students[i].mark2;
+      students[i].average = students[i].total / 2.0;
+      fprintf(file, "%d %s %.2f %.2f %.2f %.2f\n", students[i].rollNo, students[i].name,students[i].mark1, students[i].mark2, students[i].total, students[i].average);
+   }
+   fclose(file);
+   printf("\nStudents with an average greater than 90%%:\n");
+   printf("RollNo\tName\t\tAverage\n");
+
+   file = fopen("student_details.txt", "r");
+   struct Student student;
+   while (fscanf(file, "%d %s %f %f %f %f", &student.rollNo, student.name, &student.mark1,
+            &student.mark2, &student.total, &student.average) == 6) {
+      if (student.average > 90) {
+         printf("%d\t%s\t\t%.2f\n", student.rollNo, student.name, student.average);
+      }
+   }
+   fclose(file);
+
+   return 0;
+}
