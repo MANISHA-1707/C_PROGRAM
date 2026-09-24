@@ -1,0 +1,11 @@
+#include <stdio.h>
+int main()
+{
+   int num;
+   printf("Enter a number: ");
+   scanf("%d",&num);
+   if((num%6)==0)
+      printf("Number %d is divisible by six.",num);
+   else
+      printf("Number %d is not divisible by six.",num);
+}
