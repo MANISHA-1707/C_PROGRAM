@@ -1,0 +1,23 @@
+#include <stdio.h>
+int factorial(int);
+int main()
+{
+   int n,r,p,fact1,fact2,fact3,ncr;
+   printf("Enter the Value of n,r: ");
+   scanf("%d%d",&n,&r);
+   p = n-r;
+   fact1 = factorial(n);
+   fact2 = factorial(r);
+   fact3 = factorial(p);
+   ncr = fact1/(fact2*fact3);
+   printf("ncr is: %d\n",ncr);
+}
+int factorial(n)
+{
+   int i,f=1;
+   for (i=1;i<=n;i++)
+   {
+      f = f*i;
+   }
+   return f;
+}
